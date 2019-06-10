@@ -3,6 +3,7 @@
 - Exactly **64 lines of code** (including comments)<img src="https://media.giphy.com/media/3MdUtlnqBWi8YnkIig/giphy.gif" align="right">
 - Works on **Linux** and **MacOS**
 - Only **4KB**
+- Able to be piped out to other programs
 <br>
 <br>
 <br>
