@@ -12,6 +12,18 @@
 <br>
 <br>
 
+## Why?
+
+Many times, the person who posted the photo, puts all the
+tags very close to each other, which makes is very difficult
+click on the username.
+
+Here is an example of what I mean:
+
+![](https://user-images.githubusercontent.com/27065646/59212097-ca3d5480-8bb1-11e9-8481-07bd3784e689.png)
+
+Honestly, it is almost impossible to click on some of the tags.
+
 ## Installation
 ```python
 pip3 install tagged-users
@@ -33,4 +45,4 @@ optional arguments:
 ## License
 MIT License
 
-Copyright (c) 2019 Siddharth Dushantha<Paste>
+Copyright (c) 2019 Siddharth Dushantha
