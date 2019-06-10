@@ -3,6 +3,10 @@
 - Exactly **64 lines of code** (including comments)<img src="https://media.giphy.com/media/3MdUtlnqBWi8YnkIig/giphy.gif" align="right">
 - Works on **Linux** and **MacOS**
 - Only **4KB**
+<br>
+<br>
+<br>
+<br>
 
 ## Installation
 ```python
