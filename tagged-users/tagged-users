@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+#
+# Requirements: requests
+#
+# This script gets all the usernames of the people who are
+# tagged in a public Instagram post. Why, you may ask. Well
+# Sometimes, the person who posted the photo, puts all the
+# tags very close to each other, which makes is very difficult
+# click on the username.
+# Here is an example of what I mean: https://www.instagram.com/p/ByP-9fmIlRq/
+#
+# Reading the code and dont understand the different format of the
+# for loops and if statements? Check the links below. Thats where
+# I learned how to do it from.
+# https://stackoverflow.com/a/2802748/9215267
+# https://blog.teamtreehouse.com/python-single-line-loops
+
+import argparse
+import requests
+
+
+def get_tagged_users(post_url):
+    """
+    Get all of the users who got tagged in the Instagram post
+
+    Keyword arguments:
+    post_url -- the url to the Instagram post
+    """
+
+    # If the provided url has a forward slash in the end, then add ?__a=1 to the
+    # end of the url, or else add /?__a=1 to the end. This is needed so that we
+    # can get the JSON data of the Instagram post.
+    url = post_url+"?__a=1" if post_url.endswith("/") else post_url+"/?__a=1"
+
+    r = requests.get(url)
+    data = r.json()
+
+    # Getting all the users who were tagged in the Instagram post
+    tagged_users = data.get("graphql").get("shortcode_media").get("edge_media_to_tagged_user").get("edges")
+
+    # Creating a list, which contains all the usernames of the users who
+    # got tagged in the Instagram post
+    tagged_users_list = [user.get("node").get("user").get("username") for user in tagged_users]
+
+    # Looping through the list of usernames and printing them in a URL format,
+    # so that you can just copy the URL and then view the Instagram account.
+    [print("https://www.instagram.com/"+username) for username in tagged_users_list]
+
+
+def main():
+    """
+    This is the main function where everything starts
+    """
+
+    parser = argparse.ArgumentParser(description="Get all the usernames of the people who got tagged in an Instagram post")
+    parser.add_argument('url', action="store", help="URL to Instagram post")
+
+    args = parser.parse_args()
+
+    get_tagged_users(args.url)
+
+
+if __name__ == "__main__":
+    main()
